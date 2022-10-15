@@ -1,0 +1,26 @@
+<div class="categories">
+  <div *ngFor="let category of categories" class="category" (click)="onCategorySelect(category)">
+    {{category}}
+  </div>
+</div>
+
+<hr>
+
+<div class="filters">
+
+  <div (click)="onRating()">over 4.5</div>
+  <div (click)="onDeliveryTime()">under 30 mins</div>
+  <div>
+    <form [formGroup]="priceSelect">
+      <label for="price-lvl">Price level</label>
+      <select name="price-lvl" id="price-lvl" (change)="onPriceLevel(priceSelect.value.priceLvl)" formControlName="priceLvl">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </form>
+  </div>
+  <div (click)="onDeliveryFee()">under $2 delivery fee</div>
+  <button *ngIf="isApplied" (click)="onReset()">reset</button>
+</div>

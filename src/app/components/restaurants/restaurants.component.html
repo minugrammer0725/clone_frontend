@@ -1,0 +1,35 @@
+  <div *ngIf="restaurants.length;else elseBlock">
+    <div class="restaurants">
+      <div *ngFor="let restaurant of restaurants" class="restaurant-card" (click)="onClick(restaurant)">
+        <div class="restaurant-img">
+          <img [src]="restaurant.picUrl" [alt]="restaurant.name">
+        </div>
+        <div class="restaurant-info">
+          <h6>{{restaurant.name}} logo</h6>
+          <p>{{restaurant.priceLevel}}
+            <span>{{restaurant.categories[0]}}</span>
+            <span>{{restaurant.deliveryTime}}</span>
+          </p>
+          <p>
+            {{restaurant.rating}}
+            {{restaurant.deliveryFee}}
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="no-results">
+    <div class="no-result-img">
+      <img src="https://img.cdn4dd.com/s/managed/consumer/search/NoResult.svg" alt="no-results">
+    </div>
+    <h2>No Results</h2>
+    <pre>We're working on getting more stores for you.
+      Please come back soon to try again.
+    </pre>
+  </div>
+</ng-template>
+
+
+

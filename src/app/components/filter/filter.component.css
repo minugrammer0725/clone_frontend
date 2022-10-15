@@ -1,0 +1,22 @@
+.categories {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.category {
+  cursor: pointer;
+  margin: 0 0.5rem;
+  padding: 0.3rem;
+  border: 1px solid black;
+}
+
+.filters {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.filters > * {
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
