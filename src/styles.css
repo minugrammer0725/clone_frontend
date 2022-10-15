@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+Doordash theme color
+FF3008
+
+
+*/
+
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+:root {
+  --primary-color: #FF3008;
+}
