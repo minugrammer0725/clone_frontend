@@ -1,27 +1,98 @@
-# Frontend
+Doordash Clone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
-## Development server
+1) Folder Structure:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+/src
+  /app
+    /Components
+    /Services
+    /Pipes 
+  /assets
+    /images
+  main.ts
+  index.html
+  styles.css
+  favicon.ico
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2) Pages & Components
 
-## Build
+Main Page
+<App />
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  <Header />
+    Icon/Name  
+    Asap to ___
+      Display User address (if any) 
+    <SearchBar/>
+      Input to take in term to look for (categories, included in item name, etc)
+      Updates other component when search term changes
+    <Orders/>
+      If User is authenticated, user can navigate to Ordedr page
+    <Cart/>
+      Display side panel <aside> to show user's cart (if logged in)
+      Allow users to check out => navigate to Order page.
+      Toggle (modify, delete) cart items
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  <Products/>
+    <Filter />
+      <ListofCategories/>
+        (chicken, desserts, asian, fastfood)
+        Category filter overrides the search bar results (reload all dishes)
+      <RestaurantFilter/>
+        (rating, delivery time, delivery fee, etc)
+        Filter comes second in priority (after either search bar/category)
+    <Carousel/>
+      By Default, Display all restaurants in carousel.
+      (Under $2 Delivery Fee, Wallet Friendly, Most Popular, Fastest near you, something new, etc)
+    If user applies any filter, remove the carousels and display all results(Not carousel).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  <Footer/>
+    Get to Know Us - About Us, Careers, Investors, Company Blog, Promitions, Gift Cards, etc
+    Let Us Help You - Account Details, Order History, Help
+    Doing Business - Become a Dasher, Be a Partner Restaurant, Get Dashers for Deliveries
 
-## Further help
+    App Store, Google Play Images
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Restaurant Page
+<Restaurant/>
+  <Header/> - Search bar (No need for search here)
+  Restaurant Image, Info
+  Featured Items => List all image thumbnails(click will open Dish details)
+  List of Reviews
+  All Dishes(click will open Dish details)
+    <Dish/>
+      Can Add to Cart
+  <Footer/>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Orders Page
+  Only available for authenticated users
+  If there is any 'pending' order, display it with info (Order, delivery, ETA)
+  Otherwise, display all past order history ('delivered')
+    If there is none => 'Start your first order!' => navigate to home page.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Signup Page
+  Go to Sign up page
+  <Signup/> 
+    Two-step form.
+    1) username, email, password
+    2) address
+    => Upon creation, attach cart and address info.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Signin Page
+  Go to Sign in page
+  <Signin/> 
+    Sign in using 1) email, 2) password
+  => Upon signin, provide jwt to user.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+404 Page
+  404 => redirect to home
+
+
