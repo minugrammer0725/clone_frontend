@@ -1,0 +1,36 @@
+<header>
+  <div *ngIf="loggedIn;else elseBlock" class="header-container">
+    <app-logo></app-logo>
+    <div>ASAP to {{userAddress}}</div> 
+    <app-search-bar (searchEvent)="search($event)"></app-search-bar>
+    <div><a [routerLink]="'/orders/'+userId">Orders</a></div>
+    <div>Cart</div>
+    <div (click)="signout()">Sign Out</div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="header-container">
+      <app-logo></app-logo>
+      <div>ASAP to {{userAddress}}</div> 
+      <app-search-bar (searchEvent)="search($event)"></app-search-bar>
+      <div><a routerLink="/signin">Sign in</a></div>
+      <div><a routerLink="/signup">Sign up</a></div>
+    </div>
+  </ng-template>
+</header>
+
+<main>
+  <hr>
+  <app-filter 
+    (categoryEvent)="selectCategory($event)"
+    (ratingEvent)="filterRating()"
+    (dFeeEvent)="filterDeliveryFee()"
+    (dTimeEvent)="filterDeliveryTime()"
+    (priceLvlEvent)="filterPriceLevel($event)"
+    (resetEvent)="resetFilters()"
+  ></app-filter>
+  <hr>
+  <app-restaurants [restaurants]="restaurants"></app-restaurants>
+
+</main>
+
+<footer></footer>

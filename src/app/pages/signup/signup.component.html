@@ -1,0 +1,28 @@
+<div>
+  Go back to Home
+  <a routerLink="/home">Home</a>
+</div>
+
+<div class="container">
+  <h2>Sign Up  logo here</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required="true" formControlName="username">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required="true" formControlName="email">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required="true" formControlName="password">
+    </fieldset>
+    <fieldset>
+      <label for="street">Street</label>
+      <input type="text" id="street" name="street" required="true" formControlName="street">
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required="true" formControlName="city">
+      <label for="zipcode">Zip Code</label>
+      <input type="number" id="zipcode" name="zipcode" formControlName="zipcode">
+    </fieldset>
+    <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+  </form>
+</div>
+

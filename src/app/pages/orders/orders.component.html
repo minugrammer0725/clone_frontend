@@ -1,0 +1,49 @@
+<header>
+  <div class="header-container">
+    <app-logo></app-logo>
+    <div>ASAP to {{address?.street}}</div> 
+    <div><a [routerLink]="'/orders/'+userId">Orders</a></div>
+    <div>Cart</div>
+    <div (click)="signout()">Sign Out</div>
+  </div>
+
+</header>
+
+
+<div *ngIf="pendingOrders.length; else noPendingOrders">
+  <h2>In Progress</h2>
+  <div *ngFor="let order of pendingOrders">
+    <div>Your order for <b>{{order['restaurant']['name']}}</b></div>
+    <div>Total Price: ${{order['totalPrice']}}</div>
+
+    <div class="dasher-info">
+      <div>Dasher: {{order['dasher']['name']}}</div>
+      <div>Car Type: {{order['dasher']['carType']}}</div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noPendingOrders>
+  <div class="">
+    You don't have any pending orders!
+  </div>
+</ng-template>
+
+<hr>
+
+<div *ngIf="completedOrders.length; else noCompletedOrders">
+  <h2>Past Orders</h2>
+  <div *ngFor="let order of completedOrders">
+    <div>You ordered from <b>{{order['restaurant']['name']}}</b></div>
+    <div>Order Again!
+      <button (click)="navigate(order['restaurant']['id'])">go</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noCompletedOrders>
+  <div class="">
+    You don't have any completed orders!
+  </div>
+</ng-template>
+

@@ -1,0 +1,59 @@
+<header>
+  <div *ngIf="loggedIn;else elseBlock" class="header-container">
+    <app-logo></app-logo>
+    <div>ASAP to {{user['address']['street']}}</div> 
+    <div><a [routerLink]="'/orders/'+user['id']">Orders</a></div>
+    <div>Cart</div>
+    <div (click)="signout()">Sign Out</div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="header-container">
+      <app-logo></app-logo>
+      <div>ASAP to no address..</div> 
+      <div><a routerLink="/signin">Sign in</a></div>
+      <div><a routerLink="/signup">Sign up</a></div>
+    </div>
+  </ng-template>
+</header>
+
+
+<div class="banner-img">
+  <img [src]="restaurant?.picUrl" [alt]="restaurant?.name">
+</div>
+<p>name: {{restaurant?.name}}</p>
+<p>price Level: {{restaurant?.priceLevel}}</p>
+<p>delivery time: {{restaurant?.deliveryTime}} min</p>
+<p>delivery fee: ${{restaurant?.deliveryFee}}</p>
+
+
+<div class="reviews">
+  <div *ngFor="let review of restaurant?.reviews" class="review">
+    <p>rating: {{review?.rating}}</p>
+    <b>{{review?.username}}</b>
+    <p>{{review?.reason}}</p>
+    <p>{{review?.date}}</p>
+  </div>
+</div>
+
+<div class="dishes">
+  <div *ngFor="let dish of restaurant?.menu">
+    <b>{{dish?.name}}</b>
+    <p>{{dish?.description}}</p>
+    <pre>{{dish?.price}} {{dish?.rank}} {{dish?.rate}}</pre> 
+    <img src="{{dish?.thumbUrl}}" alt="{{dish?.name}}">
+  </div>
+</div>
+
+<!-- 
+
+TODO:
+
+restaurant details 
+  e.g) categories, delivery fee/time, etc.
+
+Reviews
+
+Dishes
+  => onclick, display some info (no addToCart Yet) 
+  
+-->
